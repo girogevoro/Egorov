@@ -3,6 +3,7 @@ package com.example.laboratoryworkapplication
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.laboratoryworkapplication.ui.top_films.TopFilmsFragment
+import com.example.laboratoryworkapplication.utils.navigationGoTo
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,14 +13,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initTopFilmsScreen(savedInstanceState: Bundle?) {
-        if (savedInstanceState == null)
-            supportFragmentManager
-                .beginTransaction()
-                .replace(
-                    R.id.container,
-                    TopFilmsFragment.newInstance(),
-                    TopFilmsFragment.TAG_MAIN_MENU_FRAGMENT
-                )
-                .commitAllowingStateLoss()
+        if (savedInstanceState == null) {
+            navigationGoTo { TopFilmsFragment.newInstance() }
+        }
     }
+
 }
