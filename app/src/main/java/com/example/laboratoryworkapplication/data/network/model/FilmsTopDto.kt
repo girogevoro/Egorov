@@ -6,6 +6,5 @@ data class FilmsTopDto(
     @SerializedName("pagesCount")
     val pagesCount: Int,
     @SerializedName("films")
-    val movies: List<MovieDto> = arrayListOf(),
+    val films: List<FilmTopDto> = arrayListOf(),
 )
-

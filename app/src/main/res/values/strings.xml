@@ -3,4 +3,5 @@
     <string name="search">Поиск</string>
     <string name="page_top_films_title">Популярные</string>
     <string name="content_description_search">Найти фильм</string>
+    <string name="top_film_type_tv">%1$s (%2$s)</string>
 </resources>

@@ -2,18 +2,15 @@ package com.example.laboratoryworkapplication.data.network.model
 
 import com.google.gson.annotations.SerializedName
 
-data class MovieDto(
+data class FilmTopDto(
     @SerializedName("filmId")
     val id: Int,
     @SerializedName("nameRu")
-    val title: String,
+    val title: String?,
     @SerializedName("year")
-    val year: String,
+    val year: String?,
+    @SerializedName("posterUrlPreview")
+    val posterUrlPreview: String?,
     @SerializedName("genres")
-    val genre: List<GenreDto> = arrayListOf(),
-){
-    data class GenreDto(
-        @SerializedName("genre")
-        val value: String,
-    )
-}
+    val genres: List<GenreDto> = arrayListOf(),
+)

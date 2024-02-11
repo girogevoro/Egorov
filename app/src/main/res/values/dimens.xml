@@ -4,7 +4,9 @@
     <dimen name="poster_height">96dp</dimen>
     <dimen name="banner_width">40dp</dimen>
     <dimen name="banner_height">64dp</dimen>
-    <dimen name="banner_radius">4dp</dimen>
+    <dimen name="banner_radius">8dp</dimen>
     <dimen name="margin_16">16dp</dimen>
     <dimen name="margin_8">8dp</dimen>
+    <dimen name="elevation_8">8dp</dimen>
+    <dimen name="margin_4">4dp</dimen>
 </resources>
