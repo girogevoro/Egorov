@@ -11,7 +11,8 @@ import com.example.laboratoryworkapplication.R
 import com.example.laboratoryworkapplication.databinding.FragmentTopFilmsItemBinding
 import com.example.laboratoryworkapplication.domain.entity.FilmTop
 
-class MainListAdapter : PagingDataAdapter<FilmTop, FilmTopViewHolder>(FilmTopDiffItemCallback) {
+class MainListAdapter(private val details: (idFilm: Int?) -> Unit) :
+    PagingDataAdapter<FilmTop, FilmTopViewHolder>(FilmTopDiffItemCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilmTopViewHolder {
         return FilmTopViewHolder(
@@ -19,7 +20,8 @@ class MainListAdapter : PagingDataAdapter<FilmTop, FilmTopViewHolder>(FilmTopDif
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            )
+            ),
+            details
         )
     }
 
@@ -28,7 +30,10 @@ class MainListAdapter : PagingDataAdapter<FilmTop, FilmTopViewHolder>(FilmTopDif
     }
 }
 
-class FilmTopViewHolder(private val binding: FragmentTopFilmsItemBinding) :
+class FilmTopViewHolder(
+    private val binding: FragmentTopFilmsItemBinding,
+    private val details: (idFilm: Int?) -> Unit
+) :
     RecyclerView.ViewHolder(binding.root) {
 
     fun bind(filmTop: FilmTop?) {
@@ -41,6 +46,7 @@ class FilmTopViewHolder(private val binding: FragmentTopFilmsItemBinding) :
             )
             ratingImageView.visibility = View.INVISIBLE
             bannerImageView.load(filmTop?.posterUrlPreview)
+            root.setOnClickListener { details.invoke(filmTop?.id) }
         }
     }
 

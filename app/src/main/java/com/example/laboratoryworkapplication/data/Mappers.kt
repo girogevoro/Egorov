@@ -18,6 +18,7 @@ internal fun FilmDetailsDto.toFilmsDetails(): FilmDetails {
     return FilmDetails(
         id = id,
         title = title,
+        year = year ?: "",
         posterUrl = posterUrl,
         description = description,
         genres = genres.map { it.value ?: "" },

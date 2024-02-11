@@ -8,7 +8,9 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.laboratoryworkapplication.R
 import com.example.laboratoryworkapplication.databinding.FragmentTopFilmsBinding
+import com.example.laboratoryworkapplication.ui.details_film.DetailsFilmFragment
 import com.example.laboratoryworkapplication.utils.ViewBindingFragment
+import com.example.laboratoryworkapplication.utils.navigationGoTo
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -17,12 +19,22 @@ class TopFilmsFragment :
     ViewBindingFragment<FragmentTopFilmsBinding>(FragmentTopFilmsBinding::inflate) {
 
     private val viewModel: TopFilmsViewModel by viewModel()
-    private val mainListAdapter by lazy { MainListAdapter() }
+    private val mainListAdapter by lazy { MainListAdapter(::goToDetailsFilm) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initTopAppBar()
         intiTopFilmsRv()
+    }
+
+    override fun onBackPressed(): Boolean {
+        return true
+    }
+
+    private fun goToDetailsFilm(idFilm: Int?) {
+        idFilm?.let {
+            navigationGoTo { DetailsFilmFragment.newInstance(it) }
+        }
     }
 
     private fun initTopAppBar() {
@@ -75,8 +87,6 @@ class TopFilmsFragment :
     }
 
     companion object {
-        const val TAG_MAIN_MENU_FRAGMENT = "TAG_MAIN_MENU_FRAGMENT"
-
         fun newInstance() = TopFilmsFragment()
     }
 }
