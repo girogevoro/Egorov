@@ -18,12 +18,15 @@ fun Fragment.navigationPopBackStack(countBack: Int = 1) {
     }
 }
 
-fun Fragment.navigationGoTo(isAddBackStack: Boolean = true, createFragment: () -> Fragment) {
+fun Fragment.navigationGoTo(
+    isAddBackStack: Boolean = true, createFragment: () -> Fragment,
+    idContainer: Int = R.id.container
+) {
     val fragment = createFragment.invoke()
     val transaction = parentFragmentManager
         .beginTransaction()
         .replace(
-            R.id.container,
+            idContainer,
             fragment,
             fragment.toString()
         )
@@ -33,12 +36,15 @@ fun Fragment.navigationGoTo(isAddBackStack: Boolean = true, createFragment: () -
     transaction.commitAllowingStateLoss()
 }
 
-fun AppCompatActivity.navigationGoTo(createFragment: () -> Fragment) {
+fun AppCompatActivity.navigationGoTo(
+    createFragment: () -> Fragment,
+    idContainer: Int = R.id.container
+) {
     val fragment = createFragment.invoke()
     supportFragmentManager
         .beginTransaction()
         .replace(
-            R.id.container,
+            idContainer,
             fragment,
             fragment.toString()
         )

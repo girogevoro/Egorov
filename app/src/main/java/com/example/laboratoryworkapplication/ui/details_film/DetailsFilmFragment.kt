@@ -42,7 +42,7 @@ class DetailsFilmFragment :
                 is DetailsFilmState.LoadState.Success -> {
                     with(binding) {
                         progress.isVisible = false
-                        bannerImageView.load(it.data.posterUrl)
+                        bannerImageView.load(it.data.posterUrl) { placeholder(R.drawable.ic_placeholder_24) }
                         titleTextView.text = it.data.title
                         descriptionTextView.text = it.data.description
                         genresTextView.text = getString(

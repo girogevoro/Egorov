@@ -45,7 +45,7 @@ class FilmTopViewHolder(
                 filmTop?.year
             )
             ratingImageView.visibility = View.INVISIBLE
-            bannerImageView.load(filmTop?.posterUrlPreview)
+            bannerImageView.load(filmTop?.posterUrlPreview){placeholder(R.drawable.ic_placeholder_24)}
             root.setOnClickListener { details.invoke(filmTop?.id) }
         }
     }
