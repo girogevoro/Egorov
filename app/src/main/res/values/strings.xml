@@ -4,4 +4,6 @@
     <string name="page_top_films_title">Популярные</string>
     <string name="content_description_search">Найти фильм</string>
     <string name="top_film_type_tv">%1$s (%2$s)</string>
+    <string name="Information_there_is_no_connection">Произошла ошибка при загрузке данных, проверьте подключение к сети</string>
+    <string name="retry">Повторить</string>
 </resources>

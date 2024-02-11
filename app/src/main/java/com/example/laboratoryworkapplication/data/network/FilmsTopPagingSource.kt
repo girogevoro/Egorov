@@ -19,7 +19,6 @@ class FilmsTopPagingSource(private val apiService: ApiService) : PagingSource<In
             val response = apiService.getFilmsTop(pageNumber)
 
             return if (response.isSuccessful) {
-
                 val filmsTop = response.body()!!.films.map { it.toFilmTop() }
                 val pageSizeMax = response.body()!!.pagesCount
                 val nextPageNumber = if (pageNumber == pageSizeMax) null else pageNumber + 1
@@ -36,8 +35,7 @@ class FilmsTopPagingSource(private val apiService: ApiService) : PagingSource<In
     }
 
     companion object {
-
-        const val INITIAL_PAGE_NUMBER = 1
+        private const val INITIAL_PAGE_NUMBER = 1
     }
 
 }
