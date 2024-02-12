@@ -8,5 +8,10 @@ import org.koin.dsl.module
 
 val detailsFilmModule = module {
     viewModel { DetailsFilmViewModel(filmDetailsRepository = get()) }
-    single<FilmDetailsRepository> { FilmDetailsRepositoryImpl(apiService = get()) }
+    single<FilmDetailsRepository> {
+        FilmDetailsRepositoryImpl(
+            apiService = get(),
+            filmDetailsCacheDatabase = get()
+        )
+    }
 }
